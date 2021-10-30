@@ -52,7 +52,8 @@ export class FetchData extends Component {
   }
 
   async populateWeatherData() {
-    const response = await fetch('weatherforecast');
+    /*const response = await fetch('weatherforecast');*/
+    const response = await fetch('weatherforecast/Original');
     const data = await response.json();
     this.setState({ forecasts: data, loading: false });
   }
