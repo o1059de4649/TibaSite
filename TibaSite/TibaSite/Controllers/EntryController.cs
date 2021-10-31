@@ -1,8 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
+using NEETLibrary.Tiba.Com.Methods;
+using NEETLibrary.Tiba.Com.SqlConnection;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace TibaSite.Controllers
@@ -20,9 +23,12 @@ namespace TibaSite.Controllers
 
         [HttpPost]
         [Route("[action]")]
-        public void EntryExecute()
+        public void EntryExecute(Object obj)
         {
-            
+            var jsonString = obj.ToString();
+            TPlayer player = JsonSerializer.Deserialize<TPlayer>(jsonString);
+            var dic = NeetCommonMethod.ToDictionaryProperty(player);
+            var str = SQLCreater.CreateInsertSQLByDictionary(dic, "FortniteDB", $@"{NeetCommonMethod.CamelToSnake(nameof(TPlayer))}");
         }
     }
 }

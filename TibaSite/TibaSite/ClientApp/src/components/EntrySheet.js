@@ -6,7 +6,7 @@ export class EntrySheet extends Component {
   
     constructor(props) {
         super(props);
-        this.state = { userName: "", userId: "", };
+        this.state = { playerName: "", twitterId: "", };
         this.execute = this.execute.bind(this);
     }
 
@@ -15,11 +15,11 @@ export class EntrySheet extends Component {
     }
 
     handleOnChangeUserId(e){
-        this.setState({ userId : e.target.value });
+        this.setState({ twitterId : e.target.value });
     }
 
     handleOnChangeUserName(e) {
-        this.setState({ userName: e.target.value });
+        this.setState({ playerName: e.target.value });
     }
 
     render() {
@@ -29,8 +29,8 @@ export class EntrySheet extends Component {
 
         <p>以下の情報を入力してください。</p>
             
-            <input type="text" className="btn btn-primary" value={this.state.userId} onChange={e => this.handleOnChangeUserId(e)} />
-            <input type="text" className="btn btn-primary" value={this.state.userName} onChange={e => this.handleOnChangeUserName(e)} />
+            <input type="text" className="btn btn-primary" value={this.state.twitterId} onChange={e => this.handleOnChangeUserId(e)} />
+            <input type="text" className="btn btn-primary" value={this.state.playerName} onChange={e => this.handleOnChangeUserName(e)} />
 
         <button className="btn btn-primary" onClick={this.execute}> 決定</button>
         </div>
