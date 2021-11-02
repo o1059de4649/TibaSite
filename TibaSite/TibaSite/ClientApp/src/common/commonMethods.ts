@@ -1,4 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.css';
+
 export class CommonMethods {
 
 
@@ -26,6 +27,14 @@ export async function postData(url = '', data = {}) {
         body: JSON.stringify(data) // 本文のデータ型は "Content-Type" ヘッダーと一致する必要があります
     })
     return response.json(); // レスポンスの JSON を解析
+}
+
+// GET メソッドの実装の例
+export async function getData(controller,aciton,otherPath = "") {
+    /*const response = await fetch('weatherforecast');*/
+    const response = await fetch(controller + '/' + aciton + otherPath);
+    const data = await response.json();
+    return data;
 }
 
 

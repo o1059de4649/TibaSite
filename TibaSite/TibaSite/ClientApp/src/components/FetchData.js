@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import * as CommonMethods from '../common/commonMethods';
 export class FetchData extends Component {
   static displayName = FetchData.name;
 
@@ -53,8 +53,9 @@ export class FetchData extends Component {
 
   async populateWeatherData() {
     /*const response = await fetch('weatherforecast');*/
-    const response = await fetch('weatherforecast/Original');
-    const data = await response.json();
+    //const response = await fetch('weatherforecast/Original');
+    //const data = await response.json();
+    let data = await CommonMethods.getData('weatherforecast','Original');
     this.setState({ forecasts: data, loading: false });
   }
 }

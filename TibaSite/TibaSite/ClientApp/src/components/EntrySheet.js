@@ -1,39 +1,30 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import * as CommonMethods from '../common/commonMethods';
+import { InputEx } from '../Base/Input';
 
-export class EntrySheet extends Component {
-    static displayName = EntrySheet.name;
-  
-    constructor(props) {
-        super(props);
-        this.state = { playerName: "", twitterId: "", };
-        this.execute = this.execute.bind(this);
+export function EntrySheet(props){
+    const [playerName, setPlayerName] = useState("");
+    const [twitterId, setTwitterId] = useState("");
+
+    let execute = async function() {
+        let state = {
+            playerName: playerName,
+            twitterId: twitterId,
+        };
+        await CommonMethods.postData('entry/EntryExecute', state);
     }
 
-    async execute() {
-        await CommonMethods.postData('entry/EntryExecute', this.state);
-    }
-
-    handleOnChangeUserId(e){
-        this.setState({ twitterId : e.target.value });
-    }
-
-    handleOnChangeUserName(e) {
-        this.setState({ playerName: e.target.value });
-    }
-
-    render() {
     return (
         <div>
         <h1>EntrySheet</h1>
 
         <p>以下の情報を入力してください。</p>
             
-            <input type="text" className="btn btn-primary" value={this.state.twitterId} onChange={e => this.handleOnChangeUserId(e)} />
-            <input type="text" className="btn btn-primary" value={this.state.playerName} onChange={e => this.handleOnChangeUserName(e)} />
+            <InputEx type="text" displayName="TwitterId" className="btn btn-primary" onSync={setPlayerName} />
+            <InputEx type="text" displayName="プレイヤー名" className="btn btn-primary" onSync={setTwitterId} />
 
-        <button className="btn btn-primary" onClick={this.execute}> 決定</button>
+        <button className="btn btn-primary" onClick={execute}> 決定</button>
         </div>
     );
-    }
+    
 }

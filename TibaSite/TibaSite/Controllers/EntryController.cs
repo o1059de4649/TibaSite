@@ -27,8 +27,7 @@ namespace TibaSite.Controllers
         {
             var jsonString = obj.ToString();
             TPlayer player = JsonSerializer.Deserialize<TPlayer>(jsonString);
-            var dic = NeetCommonMethod.ToDictionaryProperty(player);
-            var str = SQLCreater.CreateInsertSQLByDictionary(dic, "FortniteDB", $@"{NeetCommonMethod.CamelToSnake(nameof(TPlayer))}");
+            player.Register(player);
         }
     }
 }
