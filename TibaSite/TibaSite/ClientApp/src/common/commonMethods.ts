@@ -30,7 +30,7 @@ export async function postData(url = '', data = {}) {
 }
 
 // GET ƒƒ\ƒbƒh‚ÌÀ‘•‚Ì—á
-export async function getData(controller,aciton,otherPath = "") {
+export async function getData(controller = '', aciton = '', otherPath = '') {
     /*const response = await fetch('weatherforecast');*/
     const response = await fetch(controller + '/' + aciton + otherPath);
     const data = await response.json();
