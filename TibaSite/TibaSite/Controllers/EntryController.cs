@@ -23,11 +23,12 @@ namespace TibaSite.Controllers
 
         [HttpPost]
         [Route("[action]")]
-        public void EntryExecute(Object obj)
+        public Object EntryExecute(Object obj)
         {
             var jsonString = obj.ToString();
             TPlayer player = JsonSerializer.Deserialize<TPlayer>(jsonString);
             player.Register(player);
+            return obj;
         }
     }
 }
