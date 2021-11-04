@@ -27,8 +27,12 @@ namespace TibaSite.Controllers
         {
             var jsonString = obj.ToString();
             TPlayer player = JsonSerializer.Deserialize<TPlayer>(jsonString);
+            //var isOK
+            //if()
             player.Register(player);
             return obj;
         }
+
+
     }
 }

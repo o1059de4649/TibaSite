@@ -4,18 +4,32 @@ import { InputEx } from '../Base/Input';
 import { PlayerList } from './PlayerList';
 
 export function EntrySheet(props){
-    const [playerName, setPlayerName] = useState("");
-    const [twitterId, setTwitterId] = useState("");
+    const [pin, setPin] = useState("");
+    const [session, setSession] = useState("");
     const playerListRef = useRef(null);
 
-    let execute = async function() {
-        let state = {
-            playerName: playerName,
-            twitterId: twitterId,
-        };
-        var res = await CommonMethods.postData('entry/EntryExecute', state);
+    let getPin = async function () {
+        //別プラウザ起動認証
+        var session = await CommonMethods.postData('twitter/OpenTwitter');
+        setSession(session);
+    }
 
-        console.log(playerListRef);
+    let execute = async function () {
+        if (pin == "") return;
+        let stateTwitter = {
+            pin: pin,
+            session: session,
+        }
+        //トークン取得
+        var token = await CommonMethods.postData('twitter/GetTokens', stateTwitter);
+
+        let stateEntry = {
+            twitterId: '',
+            playerName: '',
+        }
+
+        //確認
+        var res = await CommonMethods.postData('entry/EntryExecute', stateEntry);
         //再度描画
         playerListRef.current.Execute();
     }
@@ -25,11 +39,10 @@ export function EntrySheet(props){
             <h1>EntrySheet</h1>
 
             <p>以下の情報を入力してください。</p>
-            
-            <InputEx type="text" displayName="TwitterId" className="btn btn-primary" onSync={setPlayerName} />
-            <InputEx type="text" displayName="プレイヤー名" className="btn btn-primary" onSync={setTwitterId} />
-
+            <button className="btn btn-primary" onClick={getPin}> PINを発行</button>
+            <InputEx type="text" displayName="PIN" className="btn btn-primary" onSync={setPin} />
             <button className="btn btn-primary" onClick={execute}> 決定</button>
+
 
             <PlayerList ref={playerListRef}/>
         </div>
