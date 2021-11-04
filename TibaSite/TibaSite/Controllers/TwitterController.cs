@@ -27,28 +27,30 @@ namespace TibaSite.Controllers
 
         [HttpPost]
         [Route("[action]")]
-        public OAuthSession OpenTwitter()
+        public string OpenTwitter()
         {
             var session = OAuth.Authorize(CommonData.TwitterAPIKey, CommonData.TwitterAPIKeySecret);
             var url = session.AuthorizeUri.AbsoluteUri; // -> user open in browser
             NeetNetAccessor.OpenURL(url);
-            return session;
+            return JsonSerializer.Serialize(session);
         }
 
         [HttpPost]
         [Route("[action]")]
-        async public Task<Tokens> GetTokens(Object obj)
+        public User GetTokens(Object obj)
         {
-            TwitterMember pinSession = JsonSerializer.Deserialize<TwitterMember> (obj.ToString());
-            var pin = pinSession.pin;
-            var tokens = await pinSession.session.GetTokensAsync(pin);
-            return tokens;
+            TwitterMember twitterModel = JsonSerializer.Deserialize<TwitterMember> (obj.ToString());
+            CommonData.tokens = twitterModel.session.GetTokens(twitterModel.pin);
+            //Show
+            User showedUser = CommonData.tokens.Users.Show(id => twitterModel.playerName);
+            return showedUser;
         }
 
 
     }
     public class TwitterMember {
         public string pin { get; set; }
+        public string playerName { get; set; }
         public OAuthSession session { get; set; }
     }
 }
