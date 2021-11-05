@@ -15,6 +15,7 @@ export class InputEx extends Component {
         return (
             <div className="cp_iptxt">
                 <label className="ef">
+                    <span>{this.props.displayName}</span>
                     <input type="text" placeholder={this.props.displayName} value={this.props.value} onChange={e => this.handleOnChangeValue(e)} />
 	            </label>
             </div>
