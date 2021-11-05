@@ -37,20 +37,24 @@ namespace TibaSite.Controllers
 
         [HttpPost]
         [Route("[action]")]
-        public User GetTokens(Object obj)
+        public Object GetTokens(Object obj)
         {
             TwitterMember twitterModel = JsonSerializer.Deserialize<TwitterMember> (obj.ToString());
-            CommonData.tokens = twitterModel.session.GetTokens(twitterModel.pin);
-            //Show
-            User showedUser = CommonData.tokens.Users.Show(id => twitterModel.playerName);
-            return showedUser;
+            CommonData.tokens2 = OAuth2.GetToken(CommonData.TwitterAPIKey, CommonData.TwitterAPIKeySecret);
+            try
+            {
+                CommonData.user = CommonData.tokens2.Users.Show(id => twitterModel.playerName);
+                return CommonData.user;
+            }
+            catch
+            {
+                return new {response = "No" };
+            }
         }
 
 
     }
     public class TwitterMember {
-        public string pin { get; set; }
         public string playerName { get; set; }
-        public OAuthSession session { get; set; }
     }
 }

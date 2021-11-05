@@ -7,7 +7,7 @@ export class PlayerList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            columns: ['ID', '名称', '説明', '画像', 'TwitterID'],
+            columns: ['TwitterID', '名称', '説明', '画像'],
             modelList: [[]],
             contents: <div>Loading...</div>,
         };

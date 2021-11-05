@@ -24,14 +24,20 @@ namespace TibaSite.Controllers
 
         [HttpPost]
         [Route("[action]")]
-        public Object EntryExecute(Object obj)
+        public ResponceEx EntryExecute(Object obj)
         {
             var jsonString = obj.ToString();
+            var res = new ResponceEx();
             TPlayer player = JsonSerializer.Deserialize<TPlayer>(jsonString);
+            if (player.isExist(player)) {
+                res.Response = "そのユーザーは既に存在します。";
+                return res;
+            }
             //var isOK
             //if()
             player.Register(player);
-            return obj;
+            res.Response = "登録しました。";
+            return res;
         }
 
 
