@@ -33,8 +33,6 @@ namespace TibaSite.Controllers
                 res.Response = "そのユーザーは既に存在します。";
                 return res;
             }
-            //var isOK
-            //if()
             player.Register(player);
             res.Response = "登録しました。";
             return res;
