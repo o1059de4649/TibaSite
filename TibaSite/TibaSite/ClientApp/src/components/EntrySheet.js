@@ -1,6 +1,7 @@
 import React, { Component, useState, useRef } from 'react';
 import * as CommonMethods from '../common/commonMethods';
 import { InputEx } from '../Base/Input';
+import { ButtonEx } from '../Base/Button';
 import { PlayerList } from './PlayerList';
 
 export function EntrySheet(props){
@@ -38,7 +39,7 @@ export function EntrySheet(props){
 
             <p>以下の情報を入力してください。</p>
             <InputEx type="text" displayName="TwitterID" className="btn btn-primary" onSync={setPlayerName} />
-            <button className="btn btn-primary" onClick={execute}> 決定</button>
+            <ButtonEx onClick={execute} displayName="決定" />
             <span>{res}</span>
             <PlayerList ref={playerListRef}/>
         </div>
