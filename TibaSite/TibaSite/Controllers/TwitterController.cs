@@ -27,13 +27,13 @@ namespace TibaSite.Controllers
 
         [HttpPost]
         [Route("[action]")]
-        public string OpenTwitter()
+        public Object OpenTwitter()
         {
             var session = OAuth.Authorize(CommonData.TwitterAPIKey, CommonData.TwitterAPIKeySecret);
             var url = session.AuthorizeUri.AbsoluteUri; // -> user open in browser
             CommonData.session = session;
-            NeetNetAccessor.OpenURL(url);
-            return "OK";
+            //NeetNetAccessor.OpenURL(url);
+            return new { url = url, };
         }
 
         [HttpPost]

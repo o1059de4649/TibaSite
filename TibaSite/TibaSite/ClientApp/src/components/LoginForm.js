@@ -48,7 +48,8 @@ export class LoginForm extends Component {
     };
     async CreatePIN() {
         this.setState({ isShiknki: true });
-        await CommonMethods.postData('twitter/OpenTwitter', '');
+        var res = await CommonMethods.postData('twitter/OpenTwitter', '');
+        window.open(res.url, '_blank');
     };
 
     syncName(value) {
