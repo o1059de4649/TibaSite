@@ -9,7 +9,7 @@ export class ButtonEx extends Component {
     render() { 
         return (
             <div>
-                <button onClick={this.props.onClick} href="" class="btn btn-border">{this.props.displayName}</button>
+                <button onClick={this.props.onClick} href="" className="btn btn-border">{this.props.displayName}</button>
             </div>
         );
     }

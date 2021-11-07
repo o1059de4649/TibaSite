@@ -2,47 +2,56 @@ import React, { Component, useState, setState, useEffect } from 'react';
 import * as CommonMethods from '../common/commonMethods';
 import { TableEx } from '../Base/Table';
 import { ButtonEx } from '../Base/Button';
-import './PlayerList.css';
+import './TournamentList.css';
 
-export class PlayerList extends Component {
+export class TournamentList extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            modelList: [[]],
+            modelList: null,
             contents: <div>Loading...</div>,
             search: () => {
-                this.Execute();
+                this.Search();
+            },
+            entry: () => {
+                this.Entry();
             },
         };
 
     }
 
     componentDidMount() {
-        this.Execute();
+        this.Search();
     }
 
     async SearchModel() {
-        const data = await CommonMethods.getData('player', 'PlayerGetAll');
+        const data = await CommonMethods.getData('tournament', 'TournamentGetAll');
         await this.setState({ modelList: data });
         console.log(this.state.modelList);
         this.setState({ contents: this.tableRender() });
         return this.tableRender();
     }
 
+    async memory(path) {
+        return await CommonMethods.getMemoryStream(path);
+    }
+
     tableRender() {
         let res =
             <div>
-                <h1>プレイヤー一覧</h1>
+                <h1>大会一覧</h1>
                 <ButtonEx displayName="更新" onClick={this.state.search} />
                 {this.state.modelList.map((model, index) =>
                     <div className="row rowItem">
-                        <div className="col-2">
-                            <img className="playerImage" src={'http://pbs.twimg.com/profile_images/' + model.imagePath} />
+                        <div className="col-4">
+                            <img className="image" src={require('../media/tournament/' + model.imagePath)} />
                         </div>
-                        <div className="col-10">
-                            <h2>{model.playerName}</h2>
-                            <p>内容：{model.description}</p>
+                        <div className="col-8">
+                            <h2>{model.title}</h2>
+                            <p> 開催日時：{model.datetime}</p>
+                            <p>内容：{model.content}</p>
+                            <ButtonEx displayName="この大会に参加" onClick={this.state.entry} />
                         </div>
 
                     </div>
@@ -52,8 +61,11 @@ export class PlayerList extends Component {
         return res;
     }
 
-    async Execute() {
+    async Search() {
         let res = await this.SearchModel();
+    };
+    async Entry() {
+
     };
 
     render() {

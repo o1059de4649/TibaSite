@@ -1,25 +1,42 @@
-import React, { Component } from 'react';
+import React, { Component, useState, setState, useEffect } from 'react';
 import { Collapse, Container, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import * as CommonMethods from '../common/commonMethods';
 import './NavMenu.css';
+import { ButtonEx } from '../Base/Button';
 
 export class NavMenu extends Component {
   static displayName = NavMenu.name;
 
-  constructor (props) {
+    constructor (props) {
     super(props);
+        this.toggleNavbar = this.toggleNavbar.bind(this);
+        this.state = {
+            collapsed: true,
+            player: null,
+            logout: () => { this.Logout(); },
+        };
+        this.Logout = this.Logout.bind(this);
+    }
 
-    this.toggleNavbar = this.toggleNavbar.bind(this);
-    this.state = {
-      collapsed: true
-    };
-  }
-
-  toggleNavbar () {
+    toggleNavbar () {
     this.setState({
-      collapsed: !this.state.collapsed
+        collapsed: !this.state.collapsed
     });
-  }
+    }
+
+    async Logout(value) {
+        await CommonMethods.postData('login/LogoutExecute', '');
+        window.location = "../";
+    }
+
+    async componentDidMount() {
+        console.log('log');
+        var player = await CommonMethods.postData('common/GetPlayer','');
+        this.setState({
+            player: player,
+        });
+    }
 
   render () {
     return (
@@ -34,14 +51,25 @@ export class NavMenu extends Component {
                   <NavLink tag={Link} className="text-dark" to="/">Home</NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink tag={Link} className="text-dark" to="/counter">Counter</NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink tag={Link} className="text-dark" to="/fetch-data">Fetch data</NavLink>
-                </NavItem>
-                <NavItem>
                   <NavLink tag={Link} className="text-dark" to="/entry-sheet">Entry</NavLink>
                 </NavItem>
+                <NavItem>
+                  <NavLink tag={Link} className="text-dark" to="/tournament">Tournament</NavLink>
+                </NavItem>
+                {this.state.player == null &&
+                    <NavItem>
+                        <NavLink tag={Link} className="text-dark" to="/login">Login</NavLink>
+                    </NavItem>
+                }
+                {this.state.player != null &&
+                    <div>
+                        <ButtonEx displayName="Logout" onClick={this.state.logout} />
+                        <NavItem>
+                            <img className="" src={"http://pbs.twimg.com/profile_images/" + this.state.player.imagePath} />
+                            <span>{this.state.player.playerName}</span>
+                        </NavItem>
+                    </div>
+                }
               </ul>
             </Collapse>
           </Container>

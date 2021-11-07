@@ -24,12 +24,11 @@ namespace TibaSite.Controllers
 
         [HttpGet]
         [Route("[action]")]
-        public List<List<object>> PlayerGetAll()
+        public List<TPlayer> PlayerGetAll()
         {
             var player = new TPlayer();
             var modelList = BaseModel.GetFindAll(player);
-            var res = modelList.Select(x => x.ToDictionaryProperty().Select(x => x.Value).ToList()).ToList();
-            return res;
+            return modelList;
         }
     }
 }

@@ -13,14 +13,22 @@ namespace TibaSite.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class EntryController : ControllerBase
+    public class TournamentController : ControllerBase
     {
-        private readonly ILogger<EntryController> _logger;
+        private readonly ILogger<TournamentController> _logger;
 
-        public EntryController(ILogger<EntryController> logger)
+        public TournamentController(ILogger<TournamentController> logger)
         {
             _logger = logger;
         }
 
+        [HttpGet]
+        [Route("[action]")]
+        public List<MTournament> TournamentGetAll()
+        {
+            var tournament = new MTournament();
+            var modelList = BaseModel.GetFindAll(tournament);
+            return modelList;
+        }
     }
 }

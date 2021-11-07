@@ -7,20 +7,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
-using NEETLibrary.Tiba.Com.Models;
+using CoreTweet;
 
 namespace TibaSite.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class EntryController : ControllerBase
+    public class CommonController : ControllerBase
     {
-        private readonly ILogger<EntryController> _logger;
+        private readonly ILogger<CommonController> _logger;
 
-        public EntryController(ILogger<EntryController> logger)
+        public CommonController(ILogger<CommonController> logger)
         {
             _logger = logger;
         }
 
+        [HttpPost]
+        [Route("[action]")]
+        public TPlayer GetPlayer()
+        {
+            return CommonData.self;
+        }
     }
 }

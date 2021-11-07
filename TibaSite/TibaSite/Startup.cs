@@ -91,6 +91,7 @@ namespace TibaSite
                     spa.Options.SourcePath = "ClientApp/build";
                 }
             });
+
         }
     }
 }

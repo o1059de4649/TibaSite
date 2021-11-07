@@ -1,0 +1,9 @@
+.image {
+    width:inherit;
+}
+
+.rowItem {
+    margin: 10px;
+    border: 1px solid;
+    padding: 10px;
+}

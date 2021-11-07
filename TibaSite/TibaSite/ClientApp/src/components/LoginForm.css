@@ -1,0 +1,21 @@
+.image {
+    width:inherit;
+}
+
+.rowItem {
+    margin: 10px;
+    border: 1px solid;
+    padding: 10px;
+}
+
+.loginForm {
+    text-align: center;
+}
+
+.divCenter {
+    margin: auto;
+}
+
+.rap {
+    margin-top: 40px;
+}

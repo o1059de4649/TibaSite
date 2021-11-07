@@ -31,8 +31,38 @@ namespace TibaSite.Controllers
         {
             var session = OAuth.Authorize(CommonData.TwitterAPIKey, CommonData.TwitterAPIKeySecret);
             var url = session.AuthorizeUri.AbsoluteUri; // -> user open in browser
+            CommonData.session = session;
             NeetNetAccessor.OpenURL(url);
-            return JsonSerializer.Serialize(session);
+            return "OK";
+        }
+
+        [HttpPost]
+        [Route("[action]")]
+        public ResponceEx GetTokenSelf(Object obj)
+        {
+            var res = new ResponceEx();
+            TwitterMember twitterModel = JsonSerializer.Deserialize<TwitterMember>(obj.ToString());
+
+            CommonData.tokens = OAuth.GetTokens(CommonData.session, twitterModel.pin);
+            var user = CommonData.tokens.Users.Show(id => CommonData.tokens.UserId);
+            var index = 1 + user.ProfileImageUrl.IndexOf("profile_images") + "profile_images".Length;
+            var imageFileName = user.ProfileImageUrl.SubStringEx(index, user.ProfileImageUrl.Length - index);
+            TPlayer player = new TPlayer() { 
+                twitterId = CommonData.tokens.UserId,
+                playerName = CommonData.tokens.ScreenName,
+                description = user.Description,
+                imagePath = imageFileName,
+                password = twitterModel.password,
+            };
+            if (player.isExist(player))
+            {
+                res.Response = "そのユーザーは既に存在します。";
+                return res;
+            }
+            player.Register(player);
+            res.Response = "登録しました。";
+            CommonData.self = player;
+            return res;
         }
 
         [HttpPost]
@@ -56,5 +86,7 @@ namespace TibaSite.Controllers
     }
     public class TwitterMember {
         public string playerName { get; set; }
+        public string pin { get; set; }
+        public string password { get; set; }
     }
 }
