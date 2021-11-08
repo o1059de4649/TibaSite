@@ -2,10 +2,10 @@ import React, { Component, useState, setState, useEffect } from 'react';
 import * as CommonMethods from '../common/commonMethods';
 import { TableEx } from '../Base/Table';
 import { ButtonEx } from '../Base/Button';
-import './PlayerList.css';
+import './TeamList.css';
 import { CheckBoxEx } from '../Base/CheckBox';
 
-export class PlayerList extends Component {
+export class TeamList extends Component {
 
     constructor(props) {
         super(props);
@@ -37,8 +37,8 @@ export class PlayerList extends Component {
         }
     }
     async SearchModel() {
-        const data = await CommonMethods.getData('player', 'PlayerGetAll');
-        await this.setState({ modelList: data });
+        const data = await CommonMethods.getData('team', 'TeamGetAll');
+        await this.setState({ modelList: data.teamList });
         console.log(this.state.modelList);
         this.setState({ contents: this.tableRender() });
         return this.tableRender();
@@ -47,22 +47,26 @@ export class PlayerList extends Component {
     tableRender() {
         let res =
             <div>
-                <h1>プレイヤー一覧</h1>
+                <h1>チーム一覧</h1>
                 <ButtonEx displayName="更新" onClick={this.state.search} />
                 {this.state.modelList.map((model, index) =>
                     <div className="row rowItem" key="index">
-                        {this.props.isSelect &&
+                        {this.props.isSelect != null && this.props.isSelect &&
                             <div className="col-1">
                                 <CheckBoxEx displayName="選択" onChecked={(val) => this.Select(model, val)} />
                             </div>
                         }
-                        <div className="col-2">
-                            <img className="playerImage" src={'http://pbs.twimg.com/profile_images/' + model.imagePath} />
+                        <div className="col-3">
+                            <h2>{model.mTeam.teamName}</h2>
+                            <p>内容：{model.mTeam.description}</p>
                         </div>
-                        <div className="col-9">
-                            <h2>{model.playerName}</h2>
-                            <p>内容：{model.description}</p>
-                        </div>
+                        {model.players.map((player, pIndex) =>
+                            <div className="col-3">
+                                <img className="playerImage" src={'http://pbs.twimg.com/profile_images/' + player.imagePath} />
+                                <h2>{player.playerName}</h2>
+                                <p>内容：{player.description}</p>
+                            </div>
+                        )}
                     </div>
                 )}
             </div>

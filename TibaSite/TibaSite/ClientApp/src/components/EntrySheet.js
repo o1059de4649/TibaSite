@@ -12,7 +12,7 @@ export function EntrySheet(props){
     return (
         <div>
             <h1>EntrySheet</h1>
-            <PlayerList ref={playerListRef}/>
+            <PlayerList isSelect={false} ref={playerListRef}/>
         </div>
     );
     

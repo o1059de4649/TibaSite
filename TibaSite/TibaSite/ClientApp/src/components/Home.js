@@ -236,7 +236,7 @@ export class Home extends Component {
                             <div className="row">
 
                             <div className="row">
-                                <img src={require('../media/img/custum2.jpg')} alt="" className="img-fluid h-100" />
+                                <img src={require('../media/img/openChat1.png')} alt="" className="img-fluid h-100" />
                             </div>
 
                             <div className="col-md-12">

@@ -49,7 +49,7 @@ namespace TibaSite.Controllers
             Handler.URL = CommonData.connectionStringSelect;
             var values = new NameValueCollection();
             values["sql"] = $@"SELECT * FROM {CommonData.DBName}.{NeetCommonMethod.CamelToSnake(nameof(TPlayer))} as tp 
-                               WHERE tp.{NeetCommonMethod.CamelToSnake(nameof(player.playerName))} = '{player.playerName}'";
+                               WHERE tp.{NeetCommonMethod.CamelToSnake(nameof(player.screenName))} = '{player.screenName}'";
             string result = Handler.DoPost(values);
             var dic = Handler.ConvertDeserialize(result);
             var success = (dic.Count > 0);

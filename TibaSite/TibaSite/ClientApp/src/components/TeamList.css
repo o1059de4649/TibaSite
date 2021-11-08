@@ -1,0 +1,10 @@
+.playerImage {
+    width: 100px;
+    height: 100px;
+}
+
+.rowItem {
+    margin: 10px;
+    border: 1px solid;
+    padding: 10px;
+}

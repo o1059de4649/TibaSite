@@ -10,7 +10,7 @@ export class LoginForm extends Component {
         super(props);
         this.state = {
             isShiknki: false,
-            playerName: '',
+            screenName: '',
             pin: '',
             password: '',
             repassword: '',
@@ -53,7 +53,7 @@ export class LoginForm extends Component {
     };
 
     syncName(value) {
-        this.setState({ playerName: value });
+        this.setState({ screenName: value });
     }
 
     syncPin(value) {

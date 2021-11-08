@@ -49,7 +49,8 @@ namespace TibaSite.Controllers
             var imageFileName = user.ProfileImageUrl.SubStringEx(index, user.ProfileImageUrl.Length - index);
             TPlayer player = new TPlayer() { 
                 twitterId = CommonData.tokens.UserId,
-                playerName = CommonData.tokens.ScreenName,
+                playerName = user.Name,
+                screenName = user.ScreenName,
                 description = user.Description,
                 imagePath = imageFileName,
                 password = twitterModel.password,
