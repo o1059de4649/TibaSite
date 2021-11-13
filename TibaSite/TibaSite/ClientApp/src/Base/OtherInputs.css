@@ -23,7 +23,6 @@
 
 .cp_ipcheck .option-input02 {
     position: relative;
-    top: 13.33333px;
     right: 0;
     bottom: 0;
     left: 0;
@@ -96,3 +95,13 @@
         content: '✖︎';
         text-align: center;
     }
+
+.contents {
+    overflow: hidden;
+}
+
+.item {
+    float: left;
+    padding: 20px 30px;
+    text-align: center;
+}

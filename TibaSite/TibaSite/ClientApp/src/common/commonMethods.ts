@@ -65,4 +65,14 @@ export async function getMemoryStream(filePath = '') {
     return response;
 }
 
+// NULL”»’è
+export function nullOrUndefined(data) {
+    var res = (data == null || data == undefined);
+    return res;
+}
 
+// BRƒ^ƒO‚É•ÏŠ·
+export function replaceBR(data='') {
+    var res = data.replace('\n', '<br />');
+    return res;
+}

@@ -23,16 +23,16 @@ export class PlayerList extends Component {
     componentDidMount() {
         this.Execute();
     }
-    Select(model, isSelect) {
+    async Select(model, isSelect) {
         if (isSelect) {
             let list = this.state.selectModelList;
             list.push(model);
-            this.setState({ selectModelList: list });
+            await this.setState({ selectModelList: list });
             if (this.props.onSync != null)this.props.onSync(list);
         } else {
             let list = this.state.selectModelList;
             list.splice(list.findIndex(x => x == model),1);
-            this.setState({ selectModelList: list });
+            await this.setState({ selectModelList: list });
             if (this.props.onSync != null)this.props.onSync(list);
         }
     }
@@ -50,18 +50,26 @@ export class PlayerList extends Component {
                 <h1>プレイヤー一覧</h1>
                 <ButtonEx displayName="更新" onClick={this.state.search} />
                 {this.state.modelList.map((model, index) =>
-                    <div className="row rowItem" key="index">
+                    <div className="rowItem" key={index}>
                         {this.props.isSelect &&
-                            <div className="col-1">
+                            <div>
                                 <CheckBoxEx displayName="選択" onChecked={(val) => this.Select(model, val)} />
                             </div>
                         }
-                        <div className="col-2">
-                            <img className="playerImage" src={'http://pbs.twimg.com/profile_images/' + model.imagePath} />
+                        <div className="row">
+                            <div className="col-12">
+                                <img className="playerImage" src={'http://pbs.twimg.com/profile_images/' + model.imagePath} />
+                            </div>
                         </div>
-                        <div className="col-9">
-                            <h2>{model.playerName}</h2>
-                            <p>内容：{model.description}</p>
+                        <div className="row">
+                            <div className="col-12">
+                                <h4>{model.playerName}</h4>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col-12">
+                                <p>内容：{model.description}</p>
+                            </div>
                         </div>
                     </div>
                 )}

@@ -46,34 +46,37 @@ export class NavMenu extends Component {
             <NavbarBrand tag={Link} to="/">TibaSite</NavbarBrand>
             <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
             <Collapse className="d-sm-inline-flex flex-sm-row-reverse" isOpen={!this.state.collapsed} navbar>
-              <ul className="navbar-nav flex-grow">
-                <NavItem>
-                  <NavLink tag={Link} className="text-dark" to="/">Home</NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink tag={Link} className="text-dark" to="/team-form">CreateTeam</NavLink>
-                </NavItem>
-                <NavItem>
-                    <NavLink tag={Link} className="text-dark" to="/team-list">TeamList</NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink tag={Link} className="text-dark" to="/tournament">Tournament</NavLink>
-                </NavItem>
-                {this.state.player == null &&
-                    <NavItem>
-                        <NavLink tag={Link} className="text-dark" to="/login">Login</NavLink>
-                    </NavItem>
-                }
-                {this.state.player != null &&
-                    <div>
-                        <ButtonEx displayName="Logout" onClick={this.state.logout} />
-                        <NavItem>
-                            <img className="" src={"http://pbs.twimg.com/profile_images/" + this.state.player.imagePath} />
-                            <span>{this.state.player.playerName}</span>
-                        </NavItem>
-                    </div>
-                }
-              </ul>
+                        {this.state.player == null &&
+                            <ul className="navbar-nav flex-grow">
+                                <NavItem>
+                                    <NavLink tag={Link} className="text-dark" to="/">Home</NavLink>
+                                </NavItem>
+                                <NavItem>
+                                    <NavLink tag={Link} className="text-dark" to="/login">Login</NavLink>
+                                </NavItem>
+                            </ul>
+                        }
+                        {this.state.player != null &&
+                            <ul className="navbar-nav flex-grow">
+                                <NavItem>
+                                    <NavLink tag={Link} className="text-dark" to="/">Home</NavLink>
+                                </NavItem>
+                                <NavItem>
+                                    <NavLink tag={Link} className="text-dark" to="/team-form">CreateTeam</NavLink>
+                                </NavItem>
+                                <NavItem>
+                                    <NavLink tag={Link} className="text-dark" to="/team-list">TeamList</NavLink>
+                                </NavItem>
+                                <NavItem>
+                                    <NavLink tag={Link} className="text-dark" to="/tournament">Tournament</NavLink>
+                                </NavItem>
+                                <ButtonEx displayName="Logout" onClick={this.state.logout} />
+                                <NavItem>
+                                    <img className="" src={"http://pbs.twimg.com/profile_images/" + this.state.player.imagePath} />
+                                    <span>{this.state.player.playerName}</span>
+                                </NavItem>
+                            </ul>
+                        }
             </Collapse>
           </Container>
         </Navbar>

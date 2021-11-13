@@ -16,10 +16,14 @@ export class CheckBoxEx extends Component {
     render() { 
         return (
             <div className="cp_ipcheck">
-				<label>
-                    {this.props.displayName}
-                    <input type="checkbox" className="option-input02 checkbox" value={this.props.value} onClick={this.handleOnChangeValue}/>
-				</label>
+                <div className="contents">
+                    <div className="item">
+                        <p>{this.props.displayName}</p>
+                    </div>
+                    <div className="item">
+                        <input disabled={this.props.isDisabled} type="checkbox" className="option-input02 checkbox" value={this.props.value} onClick={this.handleOnChangeValue} />
+                    </div>
+                </div>
 			</div>
         );
     }

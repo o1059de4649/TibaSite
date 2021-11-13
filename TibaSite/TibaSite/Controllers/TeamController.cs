@@ -25,13 +25,43 @@ namespace TibaSite.Controllers
         }
 
         [HttpGet]
-        [Route("[action]")]
-        public TeamList TeamGetAll()
+        [Route("[action]/{isSelf?}")]
+        public TeamList TeamGetAll(bool isSelf = false)
         {
             var teamList = new TeamList();
 
             var mteam = new MTeam();
-            var list = MTeam.GetFindAll(mteam);
+            var list = new List<MTeam>();
+            if (!isSelf)
+            {
+                list = MTeam.GetFindAll(mteam);
+            }
+            else {
+                Handler.URL = CommonData.connectionStringSelect;
+                var values = new NameValueCollection();
+                values["sql"] = $@"
+                    SELECT 
+                        m_team.team_id
+                        ,m_team.team_name
+                        ,m_team.description
+                    FROM 
+                        {CommonData.DBName}.m_team
+                    INNER JOIN 
+                        {CommonData.DBName}.t_team 
+                    ON 
+                        t_team.team_id = m_team.team_id
+                    WHERE 
+                        t_team.player_id ={CommonData.self.playerId}
+                ";
+                string result = Handler.DoPost(values);
+                var dicList = Handler.ConvertDeserialize(result);
+                foreach (var dic in dicList)
+                {
+                    var mTeam = MTeam.DictionaryToClass<MTeam>(dic);
+                    list.Add(mTeam);
+                }
+            }
+
             foreach (var item in list)
             {
                 Handler.URL = CommonData.connectionStringSelect;
@@ -77,6 +107,82 @@ namespace TibaSite.Controllers
             return teamList;
         }
 
+        [HttpGet]
+        [Route("[action]/{tournamentId?}")]
+        public TeamList TournamentTeamGetAll(int tournamentId)
+        {
+            var teamList = new TeamList();
+            var list = new List<MTeam>();
+            Handler.URL = CommonData.connectionStringSelect;
+            var values = new NameValueCollection();
+            values["sql"] = $@"
+                SELECT 
+                    m_team.team_id
+                    , m_team.team_name
+                    , m_team.description
+                FROM 
+                    {CommonData.DBName}.m_team
+                INNER JOIN
+                    {CommonData.DBName}.t_tournament
+                ON
+                    t_tournament.team_id = m_team.team_id
+                WHERE
+                    t_tournament.tournament_id = {tournamentId}
+                ";
+            string result = Handler.DoPost(values);
+            var dicList = Handler.ConvertDeserialize(result);
+            foreach (var dic in dicList)
+            {
+                var mTeam = MTeam.DictionaryToClass<MTeam>(dic);
+                list.Add(mTeam);
+            }
+
+            foreach (var item in list)
+            {
+                Handler.URL = CommonData.connectionStringSelect;
+                values = new NameValueCollection();
+                values["sql"] = $@"
+                    SELECT 
+                        t_player.player_id
+                        ,t_player.twitter_id
+                        ,t_player.password
+                        ,t_player.player_name
+                        ,t_player.screen_name
+                        ,t_player.description
+                        ,t_player.mail_address
+                        ,t_player.image_path
+                    FROM 
+                        {CommonData.DBName}.m_team
+                    INNER JOIN 
+                        {CommonData.DBName}.t_team 
+                    ON 
+                        t_team.team_id = m_team.team_id
+                    INNER JOIN 
+                        {CommonData.DBName}.t_player
+                    ON 
+                        t_player.player_id = t_team.player_id
+                    WHERE 
+                        t_team.team_id = {item.teamId}
+                ";
+                result = Handler.DoPost(values);
+                dicList = Handler.ConvertDeserialize(result);
+                var playerList = new List<TPlayer>();
+                foreach (var dic in dicList)
+                {
+                    var player = TPlayer.DictionaryToClass<TPlayer>(dic);
+                    playerList.Add(player);
+                }
+
+                var TeamRowModel = new TeamRowModel()
+                {
+                    mTeam = item,
+                    players = playerList,
+                };
+                teamList.teamList.Add(TeamRowModel);
+            }
+            return teamList;
+        }
+
         [HttpPost]
         [Route("[action]")]
         public ResponceEx AddTeam(Object obj)
@@ -94,6 +200,7 @@ namespace TibaSite.Controllers
             var mteam = new MTeam(){
                 teamId = teamId,
                 teamName = teamForm.teamName,
+                description = teamForm.description,
             };
             mteam.Register(mteam);
             foreach (var item in teamForm.playerList)
@@ -116,6 +223,7 @@ namespace TibaSite.Controllers
     public class TeamForm {
        public List<TPlayer> playerList { get; set; }
        public string teamName { get; set; }
+       public string description { get; set; }
     }
 
     public class TeamList

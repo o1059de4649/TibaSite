@@ -9,6 +9,9 @@ using static CoreTweet.OAuth;
 
 static public class CommonData
 {
+    public static bool isLogin {
+        get { return self != null; }
+    }
     public static TPlayer self;
     public static OAuthSession session;
     public static User user;

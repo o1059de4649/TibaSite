@@ -19,3 +19,8 @@
 .rap {
     margin-top: 40px;
 }
+
+.text-danger {
+    text-align: center;
+    color: red;
+}

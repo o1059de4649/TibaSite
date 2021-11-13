@@ -18,28 +18,40 @@ export class TeamList extends Component {
             },
         };
         this.Select = this.Select.bind(this);
+        this.Tooltip = this.Tooltip.bind(this);
+        this.tooltip = React.createRef();
     }
 
     componentDidMount() {
         this.Execute();
+        this.Tooltip();
     }
-    Select(model, isSelect) {
+    async Select(model, isSelect) {
         if (isSelect) {
             let list = this.state.selectModelList;
             list.push(model);
-            this.setState({ selectModelList: list });
-            if (this.props.onSync != null)this.props.onSync(list);
+            await this.setState({ selectModelList: list });
+            if (this.props.onSync != null) this.props.onSync(list);
         } else {
             let list = this.state.selectModelList;
-            list.splice(list.findIndex(x => x == model),1);
-            this.setState({ selectModelList: list });
-            if (this.props.onSync != null)this.props.onSync(list);
+            list.splice(list.findIndex(x => x == model), 1);
+            await this.setState({ selectModelList: list });
+            if (this.props.onSync != null) this.props.onSync(list);
         }
     }
     async SearchModel() {
-        const data = await CommonMethods.getData('team', 'TeamGetAll');
+        let data = null;
+        if (this.props.tournamentId == undefined || this.props.tournamentId == null) {
+            if (this.props.isSelf == undefined || this.props.isSelf == null) {
+                data = await CommonMethods.getData('team', 'TeamGetAll', '/true');
+            } else {
+                data = await CommonMethods.getData('team', 'TeamGetAll', '/' + this.props.isSelf.toString());
+            }
+        } else {
+            data = await CommonMethods.getData('team', 'TournamentTeamGetAll', '/' + this.props.tournamentId.toString());
+        }
+
         await this.setState({ modelList: data.teamList });
-        console.log(this.state.modelList);
         this.setState({ contents: this.tableRender() });
         return this.tableRender();
     }
@@ -50,23 +62,29 @@ export class TeamList extends Component {
                 <h1>チーム一覧</h1>
                 <ButtonEx displayName="更新" onClick={this.state.search} />
                 {this.state.modelList.map((model, index) =>
-                    <div className="row rowItem" key="index">
+                    <div className="row rowItem" key={index}>
                         {this.props.isSelect != null && this.props.isSelect &&
                             <div className="col-1">
                                 <CheckBoxEx displayName="選択" onChecked={(val) => this.Select(model, val)} />
                             </div>
                         }
-                        <div className="col-3">
-                            <h2>{model.mTeam.teamName}</h2>
-                            <p>内容：{model.mTeam.description}</p>
+                        <div className="col-12">
+                            {model.mTeam != null &&
+                                <div>
+                                    <h2>{model.mTeam.teamName}</h2>
+                                    <p>内容：{model.mTeam.description}</p>
+                                </div>
+                            }
                         </div>
                         {model.players.map((player, pIndex) =>
-                            <div className="col-3">
-                                <img className="playerImage" src={'http://pbs.twimg.com/profile_images/' + player.imagePath} />
-                                <h2>{player.playerName}</h2>
-                                <p>内容：{player.description}</p>
+                            <div key={pIndex} className="row rowItem" data-toggle="tooltip" title={CommonMethods.replaceBR(player.description)}>
+                                {player.imagePath != '' &&
+                                    <img className="playerImage" src={'http://pbs.twimg.com/profile_images/' + player.imagePath} />
+                                }
+                                <p>{player.playerName}</p>
                             </div>
                         )}
+
                     </div>
                 )}
             </div>
@@ -76,6 +94,10 @@ export class TeamList extends Component {
     async Execute() {
         let res = await this.SearchModel();
     };
+
+    async Tooltip() {
+
+    }
 
     render() {
         return <div>{this.state.contents}</div>

@@ -30,5 +30,26 @@ namespace TibaSite.Controllers
             var modelList = BaseModel.GetFindAll(tournament);
             return modelList;
         }
+
+        [HttpPost]
+        [Route("[action]")]
+        public ResponceEx EntryExecute(Object obj)
+        {
+            //参加登録完了
+            TournamentForm tournamentForm = JsonSerializer.Deserialize<TournamentForm>(obj.ToString());
+            ResponceEx responce = new ResponceEx();
+            var tournament = new TTournament() {
+                teamId = tournamentForm.targetTeam.teamId,
+                tournamentId = tournamentForm.targetTournament.tournamentId,
+            };
+            tournament.Register(tournament);
+            return responce;
+        }
+
+        class TournamentForm
+        {
+            public MTeam targetTeam { get; set; }
+            public MTournament targetTournament { get; set; }
+        }
     }
 }
