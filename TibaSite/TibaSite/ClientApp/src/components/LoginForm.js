@@ -23,6 +23,8 @@ export class LoginForm extends Component {
             createPIN: () => {
                 this.CreatePIN();
             },
+            validationMessage: '',
+            success: false,
         };
         this.syncName = this.syncName.bind(this);
         this.syncPin = this.syncPin.bind(this);
@@ -38,8 +40,12 @@ export class LoginForm extends Component {
     }
 
     async Login() {
-        await CommonMethods.postData('login/LoginExecute', this.state);
-        window.location = "../";
+        let resObj = await CommonMethods.postData('login/LoginExecute', this.state);
+        this.setState({ validationMessage: resObj.response });
+        this.setState({ success: resObj.responseObj });
+        if (resObj.responseObj) {
+            window.location = "../";
+        }
     };
 
     async Add() {
@@ -112,6 +118,11 @@ export class LoginForm extends Component {
                     <div>
                         <div className="row loginForm rap">
                             <div className="col-12">
+                                {!this.state.success &&
+                                    <div className="loginForm">
+                                        <span className="text-danger loginForm">{this.state.validationMessage}</span>
+                                    </div>
+                                }
                                 <ButtonEx displayName="ログイン" onClick={this.state.login} />
                             </div>
                         </div>

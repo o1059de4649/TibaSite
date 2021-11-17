@@ -49,11 +49,14 @@ namespace TibaSite.Controllers
             Handler.URL = CommonData.connectionStringSelect;
             var values = new NameValueCollection();
             values["sql"] = $@"SELECT * FROM {CommonData.DBName}.{NeetCommonMethod.CamelToSnake(nameof(TPlayer))} as tp 
-                               WHERE tp.{NeetCommonMethod.CamelToSnake(nameof(player.screenName))} = '{player.screenName}'";
+                               WHERE 
+                                    tp.{NeetCommonMethod.CamelToSnake(nameof(player.screenName))} = '{player.screenName}'
+                                    AND tp.{NeetCommonMethod.CamelToSnake(nameof(player.password))} = '{player.password}'
+                                ";
             string result = Handler.DoPost(values);
             var dic = Handler.ConvertDeserialize(result);
             var success = (dic.Count > 0);
-            
+            res.ResponseObj = success;
             if (success) {
                 var resPlayer = TPlayer.DictionaryToClass<TPlayer>(dic.FirstOrDefault());
                 CommonData.self = resPlayer;

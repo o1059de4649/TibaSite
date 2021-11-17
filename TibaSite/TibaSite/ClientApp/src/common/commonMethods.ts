@@ -66,7 +66,7 @@ export async function getMemoryStream(filePath = '') {
 }
 
 // NULL”»’è
-export function nullOrUndefined(data) {
+export function nullOrUndefined(data = '') {
     var res = (data == null || data == undefined);
     return res;
 }
