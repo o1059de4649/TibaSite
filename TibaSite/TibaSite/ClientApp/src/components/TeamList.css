@@ -1,72 +1,72 @@
 .playerImage {
-    height: auto;
+height: auto;
 }
 
 .rowItem {
-    margin: 10px;
-    border: 1px solid;
-    padding: 10px;
+margin: 10px;
+border: 1px solid;
+padding: 10px;
 }
 
-/* ƒ}ƒEƒXƒIƒ“‚·‚é—v‘f‚Æƒc[ƒ‹ƒ`ƒbƒv‚ğ‰¡•À‚Ñ‚É‚·‚é */
+/* ï¿½}ï¿½Eï¿½Xï¿½Iï¿½ï¿½ï¿½ï¿½ï¿½ï¿½vï¿½fï¿½Æƒcï¿½[ï¿½ï¿½ï¿½`ï¿½bï¿½vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ‚É‚ï¿½ï¿½ï¿½ */
 .c-tooltip {
-    display: inline-block;
-    position: relative;
+display: inline-block;
+position: relative;
 }
 
-    /* ƒc[ƒ‹ƒ`ƒbƒv‹¤’Ê‚Ìİ’è */
-    .c-tooltip::before,
-    .c-tooltip::after {
-        -webkit-transition: all 0.2s;
-        opacity: 0;
-        position: absolute;
-        transition: all 0.2s;
-        visibility: hidden;
-        z-index: 11;
-    }
+/* ï¿½cï¿½[ï¿½ï¿½ï¿½`ï¿½bï¿½vï¿½ï¿½ï¿½Ê‚Ìİ’ï¿½ */
+.c-tooltip::before,
+.c-tooltip::after {
+-webkit-transition: all 0.2s;
+opacity: 0;
+position: absolute;
+transition: all 0.2s;
+visibility: hidden;
+z-index: 11;
+}
 
-    /* ƒc[ƒ‹ƒ`ƒbƒv‚«o‚µ‚Ì‚Ğ‚° */
-    .c-tooltip::before {
-        -webkit-transform: translateY(-50%);
-        border-color: transparent #5f6368 transparent transparent;
-        border-style: solid;
-        border-width: 3px 7px 3px 0;
-        content: "";
-        height: 0;
-        left: calc(100% + 6px);
-        top: 50%;
-        transform: translateY(-50%);
-        width: 0;
-    }
+/* ï¿½cï¿½[ï¿½ï¿½ï¿½`ï¿½bï¿½vï¿½ï¿½ï¿½ï¿½ï¿½oï¿½ï¿½ï¿½Ì‚Ğ‚ï¿½ */
+.c-tooltip::before {
+-webkit-transform: translateY(-50%);
+border-color: transparent #5f6368 transparent transparent;
+border-style: solid;
+border-width: 3px 7px 3px 0;
+content: "";
+height: 0;
+left: calc(100% + 6px);
+top: 50%;
+transform: translateY(-50%);
+width: 0;
+}
 
-    /* ƒc[ƒ‹ƒ`ƒbƒv‚«o‚µ‚Ì–{‘Ì */
-    .c-tooltip::after {
-        -webkit-transform: translateY(-50%);
-        background: #5f6368;
-        border-radius: 3px;
-        color: #fff;
-        content: attr(data-tooltip); /* ‚±‚±‚Ådata-tooltip‚Ì“à—e‚ğŒÄ‚Ño‚µ‚Ä‚¢‚é‚æ */
-        display: block;
-        font-size: 11px;
-        font-weight: 600;
-        left: calc(100% + 13px);
-        padding: 5px 10px;
-        top: 50%;
-        transform: translateY(-50%);
-        white-space: nowrap;
-    }
+/* ï¿½cï¿½[ï¿½ï¿½ï¿½`ï¿½bï¿½vï¿½ï¿½ï¿½ï¿½ï¿½oï¿½ï¿½ï¿½Ì–{ï¿½ï¿½ */
+.c-tooltip::after {
+-webkit-transform: translateY(-50%);
+background: #5f6368;
+border-radius: 3px;
+color: #fff;
+content: attr(data-tooltip); /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½data-tooltipï¿½Ì“ï¿½ï¿½eï¿½ï¿½ï¿½Ä‚Ñoï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½ï¿½ */
+display: block;
+font-size: 11px;
+font-weight: 600;
+left: calc(100% + 13px);
+padding: 5px 10px;
+top: 50%;
+transform: translateY(-50%);
+white-space: nowrap;
+}
 
-    /* ƒ}ƒEƒXƒIƒ“‚µ‚½‚Æ‚«‚ÌƒJ[ƒ\ƒ‹‚Ìİ’è */
-    .c-tooltip:hover {
-        cursor: pointer;
-    }
+/* ï¿½}ï¿½Eï¿½Xï¿½Iï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ‚ï¿½ï¿½ÌƒJï¿½[ï¿½\ï¿½ï¿½ï¿½Ìİ’ï¿½ */
+.c-tooltip:hover {
+cursor: pointer;
+}
 
-        .c-tooltip:hover::before {
-            opacity: 1;
-            visibility: visible;
-        }
+.c-tooltip:hover::before {
+opacity: 1;
+visibility: visible;
+}
 
-        .c-tooltip:hover::after {
-            opacity: 1;
-            visibility: visible;
-        }
+.c-tooltip:hover::after {
+opacity: 1;
+visibility: visible;
+}
