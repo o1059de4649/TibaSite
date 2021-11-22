@@ -1,8 +1,0 @@
-$ git init 
-初期化
-
-$ git remote add origin  https://github.com/o1059de4649/TibaSite
-gitの接続先を設定
-
-$ git pull origin master
-接続先のソースを受け取る
