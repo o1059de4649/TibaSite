@@ -104,19 +104,25 @@ export class Home extends Component {
 						<div className="row mt-4">
 							<div className="col-lg-9 col-12 order-lg-2">
 								<div className="wf-balloon wf-balloon-left px-4">
-									<h3 className="font-weight-bold">自分が嫌いで自信がないAさん</h3>
-									<p className="font-weight-bold text-muted">サブタイトル</p>
-									<p>木曾路はすべて山の中である。あるところは岨づたいに行く崖の道であり、あるところは数十間の深さに臨む木曾川の岸であり、あるところは山の尾をめぐる谷の入り口である。一筋の街道はこの深い森林地帯を貫いていた。東ざかいの桜沢から、西の十曲峠まで、木曾十一宿はこの街道に添うて、二十二里余にわたる長い谿谷の間に散在していた。道路の位置も幾たびか改まったもので、古道はいつのまにか深い山間に埋もれた。</p>
+									<h3 className="font-weight-bold">ふぇぇんさん</h3>
+									<p className="font-weight-bold text-muted">千葉講座を受講しました！</p>
+									<p>
+										千葉講座では自身がどのようなプレーをしたいかのヒアリングから始まり、自身のプレー動画から弱点の洗い出し、対策、練習メニューなどトータルアドバイスをもらえました。<br />
+
+										また、動画解析や実戦の後に行われるクリエイティブでのマンツーマン指導では直前の課題をすぐに指摘してもらえるので、とてもタメになります。<br />
+
+										千葉さんの指導方法も優しくわかりやすく教えてくれ、基本から応用まで様々な内容の講義があるので、幅広いレベルの方に合うんじゃないかと思います！<br />
+									</p>
 								</div>
 							</div>
 							<div className="col-lg-3 col-12 order-lg-1">
-								<img src={require('../media/img/personA.jpg')} alt="" className="img-fluid rounded-circle mt-2" />
+								<img src={require('../media/img/feen.jpg')} alt="" className="img-fluid rounded-circle mt-2" />
 							</div>
 						</div>
 						<div className="row mt-4">
 							<div className="col-lg-9 col-12">
 								<div className="wf-balloon wf-balloon-right px-4">
-									<h3 className="font-weight-bold">人生に夢や希望が持てないBさん</h3>
+									<h3 className="font-weight-bold">Rayさん</h3>
 									<p className="font-weight-bold text-muted">サブタイトル</p>
 									<p>木曾路はすべて山の中である。あるところは岨づたいに行く崖の道であり、あるところは数十間の深さに臨む木曾川の岸であり、あるところは山の尾をめぐる谷の入り口である。一筋の街道はこの深い森林地帯を貫いていた。東ざかいの桜沢から、西の十曲峠まで、木曾十一宿はこの街道に添うて、二十二里余にわたる長い谿谷の間に散在していた。道路の位置も幾たびか改まったもので、古道はいつのまにか深い山間に埋もれた。</p>
 								</div>
