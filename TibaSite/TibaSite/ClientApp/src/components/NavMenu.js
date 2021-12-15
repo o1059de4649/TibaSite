@@ -49,26 +49,32 @@ export class NavMenu extends Component {
                         {this.state.player == null &&
                             <ul className="navbar-nav flex-grow">
                                 <NavItem>
-                                    <NavLink tag={Link} className="text-dark" to="/">Home</NavLink>
+                                    <NavLink tag={Link} className="text-dark" to="/">トップ</NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink tag={Link} className="text-dark" to="/login">Login</NavLink>
+                                    <NavLink tag={Link} className="text-dark" to="/tiba-gundan-list">千葉軍団</NavLink>
+                                </NavItem>
+                                <NavItem>
+                                    <NavLink tag={Link} className="text-dark" to="/login">ログイン</NavLink>
                                 </NavItem>
                             </ul>
                         }
                         {this.state.player != null &&
                             <ul className="navbar-nav flex-grow">
                                 <NavItem>
-                                    <NavLink tag={Link} className="text-dark" to="/">Home</NavLink>
+                                <NavLink tag={Link} className="text-dark" to="/">トップ</NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink tag={Link} className="text-dark" to="/team-form">CreateTeam</NavLink>
+                                    <NavLink tag={Link} className="text-dark" to="/tiba-gundan-list">千葉軍団</NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink tag={Link} className="text-dark" to="/team-list">TeamList</NavLink>
+                                    <NavLink tag={Link} className="text-dark" to="/team-form">チーム作成</NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink tag={Link} className="text-dark" to="/tournament">Tournament</NavLink>
+                                <NavLink tag={Link} className="text-dark" to="/team-list">チーム一覧</NavLink>
+                                </NavItem>
+                                <NavItem>
+                                    <NavLink tag={Link} className="text-dark" to="/tournament">トーナメント</NavLink>
                                 </NavItem>
                                 <ButtonEx displayName="Logout" onClick={this.state.logout} />
                                 <NavItem>

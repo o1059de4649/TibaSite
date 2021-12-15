@@ -24,9 +24,7 @@
 
   <ItemGroup>
     <Reference Include="NEETLibrary">
-      <HintPath>..\..\..\プライベート\自作ライブラリ\neetLibrary\bin\Release\netcoreapp3.1\NEETLibrary.dll</HintPath>
-      <Private>true</Private>
-      <SpecificVersion>false</SpecificVersion>
+      <HintPath>dlls\NEETLibrary.dll</HintPath>
     </Reference>
   </ItemGroup>
 

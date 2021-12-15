@@ -9,6 +9,7 @@ import { TournamentList } from './components/TournamentList';
 import { LoginForm } from './components/LoginForm';
 import { TeamForm } from './components/TeamForm';
 import { TeamList } from './components/TeamList';
+import { TibaGundanList } from './components/TibaGundanList';
 
 import './custom.css'
 
@@ -24,6 +25,7 @@ export default class App extends Component {
         <Route path='/entry-sheet' component={EntrySheet} />
         <Route path='/team-form' component={TeamForm} />
         <Route path='/team-list' component={TeamList} />
+        <Route path='/tiba-gundan-list' component={TibaGundanList} />
         <Route path='/tournament' component={TournamentList} />
         <Route path='/login' component={LoginForm} />
       </Layout>
