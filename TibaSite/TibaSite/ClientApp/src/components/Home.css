@@ -391,3 +391,19 @@ background: #4D648D;
 color: #fff;
 text-shadow: 1px 0 0 black, 0 1px 0 black, -1px 0 0 black, 0 -1px 0 black;
 }
+
+.btn-twitter {
+    background-color: rgb(33 192 253 / 95%);
+    color: #fff;
+    border-color: #343a40;
+}
+
+.btn-youtube {
+    background-color: rgb(233 75 75 / 95%);
+    color: #fff;
+    border-color: #343a40;
+}
+
+.title {
+    margin: 30px;
+}

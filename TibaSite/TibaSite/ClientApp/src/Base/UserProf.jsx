@@ -32,11 +32,9 @@ export class UserProf extends Component {
 							<div className="wf-balloon wf-balloon-right px-4">
 								<h3 className="font-weight-bold">{this.props.playerName}</h3>
 								<p className="font-weight-bold text-muted">{this.props.subTitle}</p>
-								{this.props.description1}<br />
-
-								{this.props.description2}<br />
-
-								{this.props.description3}<br />
+								<p>
+									{this.props.description}
+								</p>
 							</div>
 						</div>
 						<div className="col-lg-3 col-12">

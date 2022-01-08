@@ -26,6 +26,59 @@ export class Home extends Component {
 				<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous" />
 				<link href="https://fonts.googleapis.com/css?family=Big+Shoulders+Display&display=swap" rel="stylesheet" />
 
+				<h1 className="text-center title">ニートプログラマ千葉のTibaSite</h1>
+				<section className="py-5 bg-light">
+					<div className="container py-5">
+						<div className="row mb-5">
+							<div className="col-md-6 mb-3">
+								<img src={require('../media/img/boss1.png')} alt="boss" className="img-fluid h-100" />
+							</div>
+							<div className="col-md-6">
+								<h3 className="text-center font-weight-bold mb-3">代表挨拶</h3>
+								<p className="text-center mb-3 h5">ニートプログラマ千葉</p>
+								<p>
+									こんにちは。<br />
+									Vtuberとなったニートプログラマ千葉と申します。<br />
+									正社員プログラマー・塾講師という経験を生かして様々な活動を展開しています。<br />
+									人はみんな多種多様な能力を持っています。なかでも地頭として求められる論理的思考はゲームやプログラミングにおいてかなり重要な力として考えられています。<br />
+									IT業界の方々はゲームが好きな方が多いです。それは論理的思考力が直結してゲームの強さとして現れ、実力を実感しやすいからかもしれません。また、プログラミングにおいてもその力が製品の品質に直結します。<br />
+									切磋琢磨し、文武両道（プログラミング・ゲーム）となれるように自分自身精進しています。<br />
+									また、ゲームから人生を学ぶこともできると考えています。<br />
+									人とコミュニケーションが十分でなければ、ゲームでもプログラミングでも成果は得られません。<br />
+									社会とゲームは似ています。<br />
+								</p>
+								<div className="row mt-2">
+									<div className="col-md-7">
+										<a href="https://twitter.com/NeetTiba_Vtuber" className="btn-twitter btn-block btn-lg mb-3 font-weight-bold p-3" role="button" aria-pressed="true">
+											twitter<i className="fas fa-arrow-right ml-3"></i>
+										</a>
+									</div>
+									<div className="col-md-5">
+										<a href="https://www.youtube.com/channel/UCxV7tp_Yn-I4HxdIelt2JqA" className="btn-youtube btn-block btn-lg font-weight-bold p-3" role="button" aria-pressed="true">
+											Youtube<i className="fas fa-arrow-right ml-3"></i>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section className="py-5">
+					<div className="container py-4">
+						<h3 className="border-bottom border-secondary col-lg-8 bw-2 p-3 mb-3">更新履歴</h3>
+						<div className="container">
+							<dl className="h5">
+								<hr />
+								<dt>2021/11/06 <span className="badge badge-secondary">サイト制作開始</span></dt>
+								<dt>2022/01/08 <span className="badge badge-secondary">サイト公開</span></dt>
+								<dd><a href="#"></a></dd>
+							</dl>
+							<p className="mt-2 text-right"><a href="./sample/" className="icon-link">一覧を見る</a></p>
+						</div>
+					</div>
+				</section>
+
 				<div className="mainV">
 					<h1><span className="catch prog">論理的思考</span>は<span className="catch str">強さ</span>になる</h1>
 					<video autoPlay loop muted ><source src={require('../media/video/SampleMovie2.mp4')} type="video/mp4" /></video>
@@ -117,18 +170,6 @@ export class Home extends Component {
 							</div>
 							<div className="col-lg-3 col-12 order-lg-1">
 								<img src={require('../media/img/feen.jpg')} alt="" className="img-fluid rounded-circle mt-2" />
-							</div>
-						</div>
-						<div className="row mt-4">
-							<div className="col-lg-9 col-12">
-								<div className="wf-balloon wf-balloon-right px-4">
-									<h3 className="font-weight-bold">Rayさん</h3>
-									<p className="font-weight-bold text-muted">サブタイトル</p>
-									<p>木曾路はすべて山の中である。あるところは岨づたいに行く崖の道であり、あるところは数十間の深さに臨む木曾川の岸であり、あるところは山の尾をめぐる谷の入り口である。一筋の街道はこの深い森林地帯を貫いていた。東ざかいの桜沢から、西の十曲峠まで、木曾十一宿はこの街道に添うて、二十二里余にわたる長い谿谷の間に散在していた。道路の位置も幾たびか改まったもので、古道はいつのまにか深い山間に埋もれた。</p>
-								</div>
-							</div>
-							<div className="col-lg-3 col-12">
-								<img src={require('../media/img/personB.jpg')} alt="" className="img-fluid rounded-circle mt-2" />
 							</div>
 						</div>
 					</div>
@@ -251,7 +292,7 @@ export class Home extends Component {
 								<h3 className="text-center font-weight-bold h2 mb-3">
 									千葉のオープンチャット<br className="d-none d-lg-block" />(Fortnite専用)
 								</h3>
-								<p className="lead text-center">千葉軍団</p>
+								<p className="lead text-center">千葉のオープンチャット</p>
 								<p className="mb-3">
 									主に千葉のフレンドで構成されているフォートナイト専用のオープンチャット。<br />
 									全員が大人の方で構成されており、優しくて礼儀ある方です！<br />
@@ -270,7 +311,7 @@ export class Home extends Component {
 										</a>
 									</div>
 									<div className="col-md-5">
-										<a href="https://twitter.com/NeetTiba_Vtuber" className="btn btn-secondary btn-block btn-lg font-weight-bold p-3" role="button" aria-pressed="true">詳しく見る<i className="fas fa-arrow-right ml-3"></i>
+										<a href="../tiba-gundan-list" className="btn btn-secondary btn-block btn-lg font-weight-bold p-3" role="button" aria-pressed="true">詳しく見る<i className="fas fa-arrow-right ml-3"></i>
 										</a>
 									</div>
 								</div>
@@ -279,60 +320,6 @@ export class Home extends Component {
 					</div>
 				</section>
 
-				<section className="py-5 bg-light">
-					<div className="container py-5">
-						<div className="row mb-5">
-							<div className="col-md-6 mb-3">
-								<img src={require('../media/img/boss1.png')} alt="boss" className="img-fluid h-100" />
-							</div>
-							<div className="col-md-6">
-								<h3 className="text-center font-weight-bold mb-3">代表挨拶</h3>
-								<p className="text-center mb-3 h5">ニートプログラマ千葉</p>
-								<p>
-									こんにちは。<br />
-									Vtuberとなったニートプログラマ千葉と申します。<br />
-									正社員プログラマー・塾講師という経験を生かして様々な活動を展開しています。<br />
-									人はみんな多種多様な能力を持っています。なかでも地頭として求められる論理的思考はゲームやプログラミングにおいてかなり重要な力として考えられています。<br />
-									IT業界の方々はゲームが好きな方が多いです。それは論理的思考力が直結してゲームの強さとして現れ、実力を実感しやすいからかもしれません。また、プログラミングにおいてもその力が製品の品質に直結します。<br />
-									切磋琢磨し、文武両道（プログラミング・ゲーム）となれるように自分自身精進しています。<br />
-									また、ゲームから人生を学ぶこともできると考えています。<br />
-									人とコミュニケーションが十分でなければ、ゲームでもプログラミングでも成果は得られません。<br />
-									社会とゲームは似ています。<br />
-								</p>
-							</div>
-						</div>
-						<div className="row">
-							<div className="col-md-6">
-								<p>
-									東京で出生。3才から神戸市に移住。またこの頃「Windows95・98・2000」を操作し、ブラウザの検索欄にローマ字で文字を入力していた。<br />
-									ゲームも毎日欠かさずやり続けていた。<br />
-									9才の頃、「カメムシの生息分布」というPowerPointのプレゼン資料が金賞となり、青少年科学館に展示された。<br />
-									18才から大手の塾講師で理系科目を担当する。<br />
-									21才のとき、分校での人気No1.講師として活躍した。<br />
-									21才の時、大学をやめて独学で初めてプログラミングに触れる。<br />
-									22才の時、アプリをリリースし、正社員プログラマーとして勤務する。<br />
-								</p>
-							</div>
-							<div className="col-md-6">
-								<img src={require('../media/img/boss2.jpg')} alt="" className="img-fluid h-100" />
-							</div>
-						</div>
-					</div>
-				</section>
-
-				<section className="py-5">
-					<div className="container py-4">
-						<h3 className="border-bottom border-secondary col-lg-8 bw-2 p-3 mb-3">更新履歴</h3>
-						<div className="container">
-							<dl className="h5">
-								<hr />
-								<dt>2021/11/06 <span className="badge badge-secondary">サイト制作開始</span></dt>
-								<dd><a href="#"></a></dd>
-							</dl>
-							<p className="mt-2 text-right"><a href="./sample/" className="icon-link">一覧を見る</a></p>
-						</div>
-					</div>
-				</section>
 			</div>
 		);
 	}
