@@ -123,23 +123,6 @@ export class Home extends Component {
 					</div>
 				</section>
 
-				{/*３つの円*/}
-				<section className="mb-5">
-					<div className="container">
-						<div className="row">
-							<h3 className="col-md-4">
-								<p className="circle">受講生<br />満足度<br />98％</p>
-							</h3>
-							<h3 className="col-md-4">
-								<p className="circle">安心の<br />アフター<br />フォロー</p>
-							</h3>
-							<h3 className="col-md-4">
-								<p className="circle">変化を<br />実感<br />できる</p>
-							</h3>
-						</div>
-					</div>
-				</section>
-
 				<section className="container-fluid text-center bg-secondary py-5">
 					<h3 className="text-white font-weight-bold ls mb-0">
 						あなたは今の自分で本当に満足していますか？
