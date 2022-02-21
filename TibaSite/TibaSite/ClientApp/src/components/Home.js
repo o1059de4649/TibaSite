@@ -31,7 +31,7 @@ export class Home extends Component {
 					<div className="container py-5">
 						<div className="row mb-5">
 							<div className="col-md-6 mb-3">
-								<img src={require('../media/img/boss1.png')} alt="boss" className="img-fluid h-100" />
+								<img src={require('../media/img/boss1.png')} alt="boss" className="img-fluid" />
 							</div>
 							<div className="col-md-6">
 								<h3 className="text-center font-weight-bold mb-3">代表挨拶</h3>
