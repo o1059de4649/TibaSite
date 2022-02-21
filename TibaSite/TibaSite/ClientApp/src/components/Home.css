@@ -396,12 +396,36 @@ text-shadow: 1px 0 0 black, 0 1px 0 black, -1px 0 0 black, 0 -1px 0 black;
     background-color: rgb(33 192 253 / 95%);
     color: #fff;
     border-color: #343a40;
+    transition: .3s background-color;
+}
+.btn-twitter i{
+    transition: .3s transform;
+}
+.btn-twitter:hover {
+    background-color: rgb(33 192 253 / 80%);
+    color: #fff;
+    text-decoration: none;
+}
+.btn-twitter:hover i.fas{
+    transform:translateX(25%);
 }
 
 .btn-youtube {
     background-color: rgb(233 75 75 / 95%);
     color: #fff;
     border-color: #343a40;
+    transition: .3s background-color;
+}
+.btn-youtube i{
+    transition: .3s transform;
+}
+.btn-youtube:hover {
+    background-color: rgb(233 75 75 / 80%);
+    color: #fff;
+    text-decoration: none;
+}
+.btn-youtube:hover i.fas{
+    transform:translateX(25%);
 }
 
 .title {
