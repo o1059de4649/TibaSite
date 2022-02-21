@@ -31,7 +31,7 @@ export class Home extends Component {
 					<div className="container py-5">
 						<div className="row mb-5">
 							<div className="col-md-6 mb-3">
-								<img src={require('../media/img/boss1.png')} alt="boss" className="img-fluid h-100" />
+								<img src={require('../media/img/boss1.png')} alt="boss" className="img-fluid" />
 							</div>
 							<div className="col-md-6">
 								<h3 className="text-center font-weight-bold mb-3">代表挨拶</h3>
@@ -50,12 +50,12 @@ export class Home extends Component {
 								<div className="row mt-2">
 									<div className="col-md-7">
 										<a href="https://twitter.com/NeetTiba_Vtuber" className="btn-twitter btn-block btn-lg mb-3 font-weight-bold p-3" role="button" aria-pressed="true">
-											twitter<i className="fas fa-arrow-right ml-3"></i>
+											<i className="fab fa-twitter mr-2"></i>Twitter<i className="fas fa-arrow-right ml-3"></i>
 										</a>
 									</div>
 									<div className="col-md-5">
 										<a href="https://www.youtube.com/channel/UCxV7tp_Yn-I4HxdIelt2JqA" className="btn-youtube btn-block btn-lg font-weight-bold p-3" role="button" aria-pressed="true">
-											Youtube<i className="fas fa-arrow-right ml-3"></i>
+											<i className="fab fa-youtube mr-2"></i>Youtube<i className="fas fa-arrow-right ml-3"></i>
 										</a>
 									</div>
 								</div>
